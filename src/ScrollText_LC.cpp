@@ -33,7 +33,7 @@ void ScrollText::_shiftAndPrint() {
 
     if(_scrollText == NULL || _scrollTextLenght == 0) return;     // if pointer to scrollText not set or lengh of scrolltext = 0, then do nothing
 
-    // shift char of arraypos from left into outBuff and all other chars in the outBuff one position to left
+    // shift char of arraypos from right into outBuff and all other chars in the outBuff one position to left
     // the char in position 0 get lost
     for(uint8_t i = 1; i < _lcd_cols; i++) {
         _outBuff[i-1] = _outBuff[i];

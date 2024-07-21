@@ -1,7 +1,7 @@
 /***
  * ScrollText_LC
  *  
- * Scroll text class for LCD-Displays use the LiquidCrystal libraray LiquidCrystal_I2C
+ * Scroll text class for LCD-Displays use the LiquidCrystal library LiquidCrystal_I2C
  * 
  *   Based on left shift char buffer 
  *          --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
