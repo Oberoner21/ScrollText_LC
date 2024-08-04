@@ -1,9 +1,9 @@
 #include <Arduino.h>
 #include <LiquidCrystal.h>
 #include "SmartDebug.h"
-#include "ScrollText_LC.h"
 
 #define USE_STANDARD_LCD
+#include "ScrollText_LC.h"
 
 const uint8_t LCD_ROWS = 2;     // displays row count
 const uint8_t LCD_COLS = 16;    // displays column count
