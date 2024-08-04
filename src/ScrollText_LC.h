@@ -1,31 +1,50 @@
 /***
  * ScrollText_LC
- *  
- * Scroll text class for LCD-Displays use the LiquidCrystal library LiquidCrystal_I2C
+ *    
+ * Scroll text class for LCD-Displays use the LiquidCrystal library LiquidCrystal_I2C (default)
+ * or LiquidCrystal, based on left shift char buffer. 
  * 
- *   Based on left shift char buffer 
+ *                              Display out char buffer          
  *          --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
  *   out <- | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | <- Next char
  *          --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
- *           0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
+ *           |   1   2   3   4   5   6   7   8   9   x   x   x   x   x   |
+ *           |                                                           |
+ *        startCol                                                     endCol
  * 
  * Version 1.0 by Oberoner21 
  */
 
 #pragma once
 #include <Arduino.h>
-#include <LiquidCrystal_I2C.h>
 
-class ScrollText {
+#ifndef USE_STANDARD_LCD
+#include <LiquidCrystal_I2C.h>
+#else
+#include <LiquidCrystal.h>
+#endif
+
+class ScrollText 
+{
     public:
-        ScrollText(LiquidCrystal_I2C *lcd, uint8_t lcd_cols, byte lcdScrollRow);
+        #ifndef USE_STANDARD_LCD
+        ScrollText(LiquidCrystal_I2C *lcd, uint8_t startCol, uint8_t endCol, uint8_t row);
+        #else
+        ScrollText(LiquidCrystal *lcd, uint8_t startCol, uint8_t endCol, uint8_t row);
+        #endif
         void setScrollText(const char *scrollText);
         void setScrollDelay(uint32_t scrollDelayMS);
         void loop();
     private:
+        #ifndef USE_STANDARD_LCD
         LiquidCrystal_I2C *_lcd;
-        uint8_t _lcd_cols;
-        byte _lcdScrollRow;
+        #else
+        LiquidCrystal *_lcd;
+        #endif   
+        uint8_t _startCol;
+        uint8_t _endCol;
+        uint8_t _row;
+        uint8_t _displayBufSize;
         char *_outBuff;
         const char *_scrollText;
         uint16_t _scrollTextLenght;
