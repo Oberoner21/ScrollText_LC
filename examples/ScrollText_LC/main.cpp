@@ -11,13 +11,13 @@ const uint8_t LCD_COLS = 16;    // displays column count
 // LCD pins
 const uint8_t RS_PIN = 2; 
 const uint8_t EN_PIN = 3;
-const uint8_t D0_PIN = 4;
-const uint8_t D1_PIN = 5;
-const uint8_t D2_PIN = 6;
-const uint8_t D3_PIN = 7;
+const uint8_t D4_PIN = 4;
+const uint8_t D5_PIN = 5;
+const uint8_t D6_PIN = 6;
+const uint8_t D7_PIN = 7;
 
 // Create the lcd object
-LiquidCrystal lcd(RS_PIN, EN_PIN, D0_PIN, D1_PIN, D2_PIN, D3_PIN);
+LiquidCrystal lcd(RS_PIN, EN_PIN, D4_PIN, D5_PIN, D6_PIN, D7_PIN);
 // create the scroll text object
 ScrollText sc(&lcd, 15, 1, 1);  // text scrolls from column 16 to column 1 in row 1                  
 
