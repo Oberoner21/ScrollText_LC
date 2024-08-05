@@ -1,8 +1,10 @@
 /***
- * ScrollText_LC
+ * @file ScrollText_LC.h
+ * 
+ * @brief Scroll text class for LCD-Displays.
  *    
- * Scroll text class for LCD-Displays use the LiquidCrystal library LiquidCrystal_I2C (default)
- * or LiquidCrystal, based on left shift char buffer. 
+ * The class use the LiquidCrystal library LiquidCrystal_I2C (default)
+ * or LiquidCrystal and is based on a left shift char buffer. 
  * 
  *                              Display out char buffer          
  *          --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
@@ -44,10 +46,10 @@ class ScrollText
         uint8_t _startCol;
         uint8_t _endCol;
         uint8_t _row;
-        uint8_t _displayBufSize;
+        uint8_t _outBuffSize;
         char *_outBuff;
-        const char *_scrollText;
-        uint16_t _scrollTextLenght;
+        const char *_scrollText = NULL;
+        uint16_t _scrollTextLenght = 0;
         uint8_t _arrayPos;
         uint32_t _scrollDelayMS = 500;
         unsigned long _lastScrollTimeStamp = 0;
